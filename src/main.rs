@@ -31,11 +31,20 @@ struct WsEvent<'a> {
     data: serde_json::Value,
 }
 
+#[cfg(target_os = "macos")]
+fn is_mac() -> bool{
+    true
+}
+#[cfg(not(target_os = "macos"))]
+fn is_mac() -> bool{
+    false
+}
+
 #[tokio::main]
 async fn main() {
     let args = Cli::from_args();
 
-    if args.mock {
+    if args.mock || is_mac() {
         println!("Running in mock input mode...");
         mock_input_loop().await;
     } else {

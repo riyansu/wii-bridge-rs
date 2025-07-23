@@ -13,4 +13,4 @@ or
 cargo run -- --mock
 ```
 After that, run the game.
-Also use the small library  `Godot/wii-connector.gd` !
+Also use the small library  `godot/wii-connector.gd` !
